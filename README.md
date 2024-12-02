@@ -1,0 +1,1 @@
+# Wepynaire Django & Wagtail SEO

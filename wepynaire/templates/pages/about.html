@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}A propos de moi{% endblock title %}
+
+{% block header %}
+<header class="bg-amber-50 flex flex-col justify-center items-center px-4 py-12 mb-8">
+    <div class="w-3/4">
+        <h1 class="mb-8 text-4xl font-bold text-center">Qui suis-je ?</h1>
+
+        <h2 class="text-2xl text-center">
+            Professeur et chercheur à la Haute école d'ingénierie et d'architecture de Fribourg 
+            et mentor python sur le web
+        </h2>
+    </div>
+</header>
+{% endblock header %}
+
+{% block content %}
+<main class="container mx-auto my-12">
+    <p class="mb-4">Je m’appelle Thierry et je vis en Suisse. J’ai découvert le langage de programmation Python en 1999. J’étais loin d’imaginer que ça allait changer ma vie et qu’il serait 20 ans plus tard le langage le plus utilisé au monde. Aujourd’hui, j’enseigne la programmation avec Python dans une haute école d’ingénierie à Fribourg depuis 2008 et en mentorats individuels sur le web depuis 2016.</p>
+
+    <p class="mb-4">J’ai créé le blog PlacePython pour aider les apprentis développeurs à entreprendre avec leurs nouvelles compétences en Python et à bâtir de nouvelles sources de revenus grâce au web.</p>
+
+    <p class="mb-4">Retrouvez-moi ici pour apprendre à donner vie efficacement à vos idées, à découper les problèmes avec aisance et à créer de la valeur pour vos clients dans le respect des bonnes pratiques de Python et de Django.</p>
+</main>
+{% endblock content %}

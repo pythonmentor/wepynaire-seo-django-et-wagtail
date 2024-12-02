@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}{{ article.title }}{% endblock title %}
+
+{% block seo_meta %}
+    <meta name="description" content="{% block meta_description %}{% if article.seo_description %}{{ article.seo_description }}{% else %}{{ article.summary }}{% endif %}{% endblock meta_description %}">
+    <link rel="canonical" href="{{ request.build_absolute_uri }}">
+    <meta name="robots" content="{% block meta_robots %}index, follow{% endblock meta_robots %}">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="{% block og_title %}{% if article.seo_title %}{{ article.seo_title }}{% else %}{{ article.title }}{% endif %}{% endblock og_title %}">
+    <meta property="og:description" content="{% block og_description %}{% if article.seo_description %}{{ article.seo_description }}{% else %}{{ article.summary }}{% endif %}{% endblock og_description %}">
+    <meta property="og:image" content="{{ SITE_URL }}{% block og_image %}{% if article.seo_image %}{{ article.seo_image.url }}{% else %}{{ article.image.url }}{% endif %}{% endblock og_image %}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% block twitter_title %}{% if article.seo_title %}{{ article.seo_title }}{% else %}{{ article.title }}{% endif %}{% endblock twitter_title %}">
+    <meta name="twitter:description" content="{% block twitter_description %}{% if article.seo_description %}{{ article.seo_description }}{% else %}{{ article.summary }}{% endif %}{% endblock twitter_description %}">
+    <meta name="twitter:image" content="{{ SITE_URL }}{% block twitter_image %}{% if article.seo_image %}{{ article.seo_image.url }}{% else %}{{ article.image.url }}{% endif %}{% endblock twitter_image %}">
+
+    <!-- Balise Keywords (optionnelle) -->
+    <meta name="keywords" content="{% block meta_keywords %}python, django, tutoriels, programmation, développement web{% endblock meta_keywords %}">
+{% endblock seo_meta %}
+
+{% block header %}
+<header class="bg-amber-50 flex flex-col justify-center items-center px-4 py-12 mb-8">
+    <div class="w-3/4 flex flex-col justify-center items-center">
+        <h1 class="mb-8 text-4xl font-bold text-center">{{ article.title }}</h1>
+
+        <div class="w-80 rounded-2xl overflow-hidden">
+            <img class="object-cover object-center" src="{{ article.image.url }}" alt="{{ article.image_alt_text }}">
+        </div>
+    </div>
+</header>
+{% endblock header %}

@@ -1,0 +1,62 @@
+{% load django_vite static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %} | Wepynaire</title>
+
+    {% block seo_meta %}
+        <meta name="description" content="{% block meta_description %}Découvrez PlacePython, votre ressource pour Python et Django.{% endblock meta_description %}">
+        <link rel="canonical" href="{{ request.build_absolute_uri }}">
+        <meta name="robots" content="{% block meta_robots %}index, follow{% endblock meta_robots %}">
+
+        <!-- Open Graph Meta Tags -->
+        <meta property="og:title" content="{% block og_title %}Bienvenue sur PlacePython{% endblock og_title %}">
+        <meta property="og:description" content="{% block og_description %}La plateforme pour tout apprendre sur Python et Django.{% endblock og_description %}">
+        <meta property="og:image" content="{{ SITE_URL }}{% block og_image %}{% static 'images/developpeuse-placepython.png' %}{% endblock og_image %}">
+        <meta property="og:url" content="{{ request.build_absolute_uri }}">
+        <meta property="og:type" content="website">
+
+        <!-- Twitter Meta Tags -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="{% block twitter_title %}Bienvenue sur PlacePython{% endblock twitter_title %}">
+        <meta name="twitter:description" content="{% block twitter_description %}La plateforme pour tout apprendre sur Python et Django.{% endblock twitter_description %}">
+        <meta name="twitter:image" content="{{ SITE_URL }}{% block twitter_image %}{% static 'images/developpeuse-placepython.png' %}{% endblock twitter_image %}">
+
+        <!-- Balise Keywords (optionnelle) -->
+        <meta name="keywords" content="{% block meta_keywords %}python, django, tutoriels, programmation, développement web{% endblock meta_keywords %}">
+    {% endblock seo_meta %}
+
+    {% vite_hmr_client %}
+    {% vite_asset 'src/index.js' %}
+</head>
+<body class="min-h-screen flex flex-col bg-gray-50">
+    {% block navigation %}
+    <nav class="p-4 text-white bg-black">
+        <div class="container mx-auto flex justify-between">
+            <div>
+                <a href="{% url 'pages:home' %}" class="text-white text-2xl">PlacePython</a>
+            </div>
+            <div class="flex space-x-4">
+                <a href="{% url 'pages:home' %}" class="hover:text-amber-600">Accueil</a>
+                <a href="{% url 'pages:about' %}" class="hover:text-amber-600">À propos</a>
+            </div>
+        </div>
+    </nav>
+    {% endblock navigation %}
+
+    {% block header %}{% endblock header %}
+
+    {% block content %}{% endblock content %}
+
+    {% block footer %}
+    <footer class="bg-black text-white mt-auto">
+        <p class="container mx-auto py-4">
+            &copy; 2024 PlacePython
+        </p>
+    </footer>
+    {% endblock footer %}
+</body>
+</html>
